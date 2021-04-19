@@ -1,0 +1,32 @@
+<form class="user" action="#"
+      th:action="@{/modals/review-modal}"
+      th:object="${form}" method="post">
+    <div class="modal-header">
+        <h5 class="modal-title text-gray-800" id="modalsLabel">Review Product</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <span>Share you experience and leave us a review:</span>
+        <input th:field="*{transactionId}" type="text" hidden readonly/>
+        <div class="form-group row mt-3">
+            <div class="col-sm-6">
+                <input th:field="*{reviewTitle}" type="text" class="form-control form-control-user" maxlength="15"
+                       id="inputTitle" placeholder="Title" required/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <textarea th:field="*{reviewBody}" class="form-control rounded-0 " rows="5" id="inputBody"
+                          placeholder="Tell us what you think.." maxlength="99999" required>
+                </textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-user btn-block col-sm-3">Add Review</button>
+        <button class="btn btn-secondary btn-user btn-block col-sm-3" type="button" data-dismiss="modal">Cancel</button>
+    </div>
+    </div>
+</form>

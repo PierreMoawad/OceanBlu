@@ -1,0 +1,42 @@
+<form class="user" action="#"
+      th:action="@{/modals/edit-profile-modal}"
+      th:object="${form}" method="post">
+    <div class="modal-header">
+        <h5 class="modal-title text-gray-800" id="modalsLabel">Edit Profile</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <span>Edit your user profile information:</span>
+        <input th:field="*{userId}" type="text" hidden readonly/>
+        <div class="form-group row mt-3">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <input th:field="*{firstName}" type="text" class="form-control form-control-user"
+                       id="firstName" placeholder="First Name" required maxlength="12"/>
+            </div>
+            <div class="col-sm-6">
+                <input th:field="*{lastName}" type="text" class="form-control form-control-user"
+                       id="lastName" placeholder="Last Name" maxlength="12" required/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <input th:field="*{username}" type="text" class="form-control form-control-user"
+                       id="username" placeholder="Username" maxlength="12" required/>
+            </div>
+            <div class="col-sm-6">
+                <select class="form-control form-control-user" id="sel" th:field="*{gender}"
+                        required>
+                    <option value="">Select Gender</option>
+                    <option th:each="gender : ${T(com.pierre.oceanblu.model.User.Gender).values()}"
+                            th:value="${gender}" th:text="${gender}" class="dropdown-item"></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-user btn-block col-sm-3">Submit</button>
+        <button class="btn btn-secondary btn-user btn-block col-sm-3" type="button" data-dismiss="modal">Cancel</button>
+    </div>
+</form>
