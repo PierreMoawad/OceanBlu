@@ -55,13 +55,12 @@ public class MainService {
 
         switch (form.getStatus()) {
 
-            case EXISTING_PRODUCT: {
+            case EXISTING_PRODUCT:
 
                 productToBeSaved = productRepository.getById(form.getExistingProductID());
                 break;
-            }
 
-            case NEW_PRODUCT: {
+            case NEW_PRODUCT:
 
                 if (form.getNewProductImage().getSize() > maxUploadSize.toBytes()) {
 
@@ -71,9 +70,8 @@ public class MainService {
 
                     productToBeSaved = form.getNewProduct();
                     productToBeSaved.setImage(form.getNewProductImage().getBytes());
-                    break;
                 }
-            }
+                break;
 
             default: throw new IllegalPurchaseStatusException(form.getStatus());
         }
@@ -122,16 +120,15 @@ public class MainService {
 
         switch (form.getType()) {
 
-            case ONLY_REVIEW: {
+            case ONLY_REVIEW:
 
                 rating  = transaction.getRating();
                 rating.setReviewLeft(true);
                 rating.setReviewTitle(form.getReviewTitle());
                 rating.setReviewBody(form.getReviewBody());
                 break;
-            }
 
-            case RATE_AND_REVIEW: {
+            case RATE_AND_REVIEW:
 
                 rating = new Rating();
                 rating.setRate(form.getRate());
@@ -143,7 +140,6 @@ public class MainService {
                     rating.setReviewBody(form.getReviewBody());
                 }
                 break;
-            }
 
             default: throw new IllegalRatingFormTypeException(form.getType());
         }
