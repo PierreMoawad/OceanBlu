@@ -1,9 +1,6 @@
 package com.pierre.oceanblu.service;
 
-import com.pierre.oceanblu.model.Product;
-import com.pierre.oceanblu.model.Transaction;
-import com.pierre.oceanblu.model.User;
-import com.pierre.oceanblu.model.Wish;
+import com.pierre.oceanblu.model.*;
 import com.pierre.oceanblu.model.form.ChangePasswordForm;
 import com.pierre.oceanblu.model.form.EditUserProfileForm;
 import com.pierre.oceanblu.repository.UserRepository;
