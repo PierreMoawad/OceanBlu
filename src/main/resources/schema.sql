@@ -51,8 +51,7 @@ CREATE TABLE IF NOT EXISTS ocean_blu.rating
 
 CREATE TABLE IF NOT EXISTS ocean_blu.wishlist
 (
-    `id`         INT NOT NULL AUTO_INCREMENT,
     `user_id`    INT NOT NULL,
     `product_id` INT NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (user_id, product_id)
 );
