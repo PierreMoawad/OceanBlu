@@ -77,4 +77,4 @@
    </ul>
 </details>
 
-## <a name="#application-screenshots"></a> Application screenshots
+## Application screenshots
