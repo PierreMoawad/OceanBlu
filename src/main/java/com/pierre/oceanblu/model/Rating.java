@@ -17,6 +17,7 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(mappedBy = "rating", fetch = FetchType.LAZY)
+    @Nullable
     private Transaction transaction;
     private Integer rate;
     @Column(name = "review_left")

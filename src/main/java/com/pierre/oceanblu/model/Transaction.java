@@ -1,6 +1,7 @@
 package com.pierre.oceanblu.model;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,6 +26,7 @@ public class Transaction {
     private User user;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rating_id", referencedColumnName = "id")
+    @Nullable
     private Rating rating;
     @Builder.Default
     @Column(columnDefinition = "DATETIME")
@@ -53,7 +55,7 @@ public class Transaction {
         Product oldProduct = this.product;
 
         if (Objects.equals(product, oldProduct))
-            return ;
+            return;
 
         this.product = product;
 
@@ -69,7 +71,7 @@ public class Transaction {
         User oldUser = this.user;
 
         if (Objects.equals(user, oldUser))
-            return ;
+            return;
 
         this.user = user;
 
