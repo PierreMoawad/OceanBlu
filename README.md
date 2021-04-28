@@ -24,50 +24,10 @@
             <li><a href="#eer-diagram">EER Diagram</a></li>
          </ul>
       </li>
-      <li>
-         <a href="#installing">Installing</a>
-         <ul>
-            <li><a href="#running-the-application-with-ide">Running the application with IDE</a></li>
-            <li><a href="#running-the-application-with-maven">Running the application with Maven</a></li>
-            <li>
-               <a href="#running-the-application-with-executable-jar">Running the application with Executable JAR</a>
-               <ul>
-                  <li>
-                     <a href="#accessing-data-in-h2-database">Accessing Data in H2 Database</a>
-                     <ul>
-                        <li><a href="#h2-console">H2 Console</a></li>
-                     </ul>
-                  </li>
-               </ul>
-            </li>
-            <li><a href="#running-the-application-via-docker-container">Running the application via docker container</a></li>
-         </ul>
-      </li>
-      <li>
-         <a href="#deployment">Deployment</a>
-      </li>
-      <li>
-         <a href="#code-coverage">Code Coverage</a>
-         <ul>
-            <li><a href="#cobertura">Cobertura</a></li>
-         </ul>
-      </li>
-      <li>
-         <a href="#testing-api">Testing API</a>
-         <ul>
-            <li><a href="#testing-with-postman-runner">Testing with Postman Runner</a></li>
-            <li><a href="#testing-with-maven">Testing with Maven</a></li>
-            <li><a href="#basic-load-testing">Basic Load Testing</a></li>
-         </ul>
-      </li>
       <li><a href="#security">Security</a></li>
-      <li><a href="#explore-rest-apis">Explore Rest APIs</a></li>
-      <li><a href="#documentation">Documentation</a></li>
-      <li><a href="#internationalization--i18n-">Internationalization (i18n)</a></li>
-      <li>
+     <li>
          <a href="#files-and-directories-structure">Files and Directories Structure</a>
       </li>
-      <li><a href="#reporting-issues-suggest-improvements">Reporting Issues/Suggest Improvements</a></li>
 	  <li><a href="#changelog">Changelog</a></li>
       <li><a href="#the-end">The End</a></li>
       <li><a href="#contributing">Contributing</a></li>
@@ -78,3 +38,18 @@
 </details>
 
 ## Application screenshots
+
+[![Home](documents/screenshots/scr01.jpg)](documents/screenshots/scr01.jpg)
+
+**More [Screenshots](documents/SCREENSHOTS.md)**
+
+## Technology stack & other Open-source libraries
+
+### Data
+
+<details open="open">
+   <ul>
+      <li><a href="https://spring.io/projects/spring-data-jpa">Spring Data JPA</a> - Improve the implementation of data access layers by reducing the effort to the amount that’s actually needed</li>
+      <li><a href="https://www.mysql.com/">MySQL</a> - Open-Source Relational Database Management System</li>
+   </ul>
+</details>
