@@ -19,6 +19,7 @@ import org.springframework.util.unit.DataSize;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import static com.pierre.oceanblu.model.Transaction.*;
 import static com.pierre.oceanblu.model.Transaction.Code.*;
@@ -123,9 +124,13 @@ public class MainService {
             case ONLY_REVIEW:
 
                 rating  = transaction.getRating();
-                rating.setReviewLeft(true);
-                rating.setReviewTitle(form.getReviewTitle());
-                rating.setReviewBody(form.getReviewBody());
+
+                if (rating != null) {
+
+                    rating.setReviewLeft(true);
+                    rating.setReviewTitle(form.getReviewTitle());
+                    rating.setReviewBody(form.getReviewBody());
+                }
                 break;
 
             case RATE_AND_REVIEW:
@@ -145,7 +150,7 @@ public class MainService {
         }
 
         transaction.setRating(rating);
-        ratingRepository.save(rating);
+        ratingRepository.save(Objects.requireNonNull(rating));
         transactionRepository.save(transaction);
     }
 }

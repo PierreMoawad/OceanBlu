@@ -60,7 +60,7 @@ public class Transaction {
         this.product = product;
 
         if (oldProduct!=null)
-            oldProduct.removeTransaction(null);
+            oldProduct.removeTransaction(this);
 
         if (product!=null)
             product.addTransaction(this);
@@ -76,7 +76,7 @@ public class Transaction {
         this.user = user;
 
         if (oldUser!=null)
-            oldUser.removeTransaction(null);
+            oldUser.removeTransaction(this);
 
         if (user!=null)
             user.addTransaction(this);
@@ -92,7 +92,7 @@ public class Transaction {
         this.rating = rating;
 
         if (oldRating!=null)
-            oldRating.setTransaction(null);
+            oldRating.setTransaction(this);
 
         if (rating!=null)
             rating.setTransaction(this);

@@ -18,9 +18,10 @@
       </li>
       <li><a href="#features-and-to-do">Features and To-Do</a></li>
       <li>
-         <a href="#getting-started">Getting Started</a>
+         <a href="#installation">Installation</a>
          <ul>
             <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#downloading---running">Downloading & Running</a></li>
             <li><a href="#eer-diagram">EER Diagram</a></li>
          </ul>
       </li>
@@ -28,12 +29,6 @@
      <li>
          <a href="#files-and-directories-structure">Files and Directories Structure</a>
       </li>
-	  <li><a href="#changelog">Changelog</a></li>
-      <li><a href="#the-end">The End</a></li>
-      <li><a href="#contributing">Contributing</a></li>
-      <li><a href="#license">License</a></li>
-      <li><a href="#fossa-third-party-code--license-compliance-and-vulnerabilities">FOSSA third-party code, license compliance and vulnerabilities</a></li>
-      <li><a href="#contact">Contact</a></li>
    </ul>
 </details>
 
@@ -109,3 +104,44 @@
       <li>[ ] Adding search feature</li>
    </ul>
 </details>
+
+## Installation
+
+Use the following instructions to download and run the project on your local machine for trying and testing the project's features.
+
+### Prerequisites
+
+The application uses Java 8 and MySQL. So after downloading or pulling the code on your local machine, you need to make sure that:
+* MySQL is installed.
+* A connection is set up.
+* Set the password of the `root` user to that in the [`application.properties`](/src/main/resources/application.properties) file.
+
+```properties
+spring.datasource.username=root
+spring.datasource.password=Root*597*Coz
+```
+Initializing the database, tables and data is handled automatically by Spring on the first run.
+
+### Downloading & Running
+
+There are several ways to run a Spring Boot application on your local machine. Instructions of how to run the application using the IDE or a standalone JAR will be given below.
+
+#### Running the application with IDE
+
+You can execute the `main` method in the `com.pierre.oceanblu.OceanBluApplication` class from your IDE.
+
+* 	Download the zip or clone the Git repository.
+* 	Unzip the zip file (if you downloaded one)
+*   In the IDE click File -> Open/Import -> Existing Maven Project -> Navigate to the folder where you unzipped the zip
+*   Select the project
+* 	Open the Spring Boot Application file (search for @SpringBootApplication)
+* 	Right-click on the file and Run as Java Application
+
+#### Running the application with Executable JAR
+
+The code can also be built into a jar and then executed/run. Once the jar is built, run the jar by double-clicking on it or by using the command:
+
+```shell
+$ java -jar OceanBlu.jar
+```
+
