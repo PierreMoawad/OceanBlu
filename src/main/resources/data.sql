@@ -23,7 +23,7 @@ VALUES (4, 'samantha.schultz', '$2a$10$zyopVv0Re1KJTuK0gEYdduWoAJb/gZaFyeQF7C0SP
 
 INSERT IGNORE INTO product
     (id, name, company, price, quantity, image, description)
-VALUES (1000, 'iPhone X', 'Apple', 950, 4, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/iphone_x.jpg'),
+VALUES (1000, 'iPhone X', 'Apple', 950, 4, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/iphone_x.jpg'),
         'Finish
 
 •	Space Gray
@@ -148,7 +148,7 @@ Apple Pay
 •	Receive and redeem rewards using rewards cards');
 INSERT IGNORE INTO product
     (id, name, company, price, quantity, image, description)
-VALUES (1001, 'Galaxy S8', 'Samsung', 850, 3, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/galaxy_s8.jpg'),
+VALUES (1001, 'Galaxy S8', 'Samsung', 850, 3, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/galaxy_s8.jpg'),
         'General
 
 •   Model: Galaxy S8 G950F
@@ -245,7 +245,7 @@ Data
 ');
 INSERT IGNORE INTO product
     (id, name, company, price, quantity, image, description)
-VALUES (1002, 'P20 Pro', 'Huawei', 690, 9, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/huawei_p20.jpg'),
+VALUES (1002, 'P20 Pro', 'Huawei', 690, 9, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/huawei_p20.jpg'),
         'General
 
 •   Model:      Huawei P20 Pro
@@ -332,7 +332,7 @@ Data
 ');
 INSERT IGNORE INTO product
 (id, name, company, price, quantity, image, description)
-VALUES (1003, 'Mate 40 Pro', 'Huawei', 775, 6, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/huawei_mate40.jpg'),
+VALUES (1003, 'Mate 40 Pro', 'Huawei', 775, 6, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/huawei_mate40.jpg'),
         'General
 
 •   Model:      Huawei Mate 40 Pro
@@ -421,7 +421,7 @@ Data
 ');
 INSERT IGNORE INTO product
 (id, name, company, price, quantity, image, description)
-VALUES (1004, 'iPhone 12 Pro', 'Apple', 1200, 5, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/iphone_12.jpg'),
+VALUES (1004, 'iPhone 12 Pro', 'Apple', 1200, 5, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/iphone_12.jpg'),
         'Finish
 
 •   Silver
@@ -563,7 +563,7 @@ Apple Pay
 ');
 INSERT IGNORE INTO product
 (id, name, company, price, quantity, image, description)
-VALUES (1005, 'Galaxy Note20', 'Samsung', 820, 7, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/galaxy_note20.jpg'),
+VALUES (1005, 'Galaxy Note20', 'Samsung', 820, 7, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/galaxy_note20.jpg'),
         'General
 
 •   Model:      Samsung Galaxy Note 20
@@ -654,7 +654,7 @@ Data
 ');
 INSERT IGNORE INTO product
 (id, name, company, price, quantity, image, description)
-VALUES (1006, 'Galaxy Z Flip', 'Samsung', 1399, 3, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/galaxy_zflip.jpg'),
+VALUES (1006, 'Galaxy Z Flip', 'Samsung', 1399, 3, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/galaxy_zflip.jpg'),
         'General
 
 •   Model:      Samsung Galaxy Z Flip
@@ -742,7 +742,7 @@ Data
 ');
 INSERT IGNORE INTO product
 (id, name, company, price, quantity, image, description)
-VALUES (1007, 'Galaxy S20', 'Samsung', 732, 12, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/galaxy_s20.jpg'),
+VALUES (1007, 'Galaxy S20', 'Samsung', 732, 12, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/galaxy_s20.jpg'),
         'General
 
 •   Model:      Samsung Galaxy S20 FE 4G
@@ -832,7 +832,7 @@ Data
 ');
 INSERT IGNORE INTO product
 (id, name, company, price, quantity, image, description)
-VALUES (1008, 'Armor 10', 'Ulefone', 550, 7, LOAD_FILE('D:/Git/OceanBlu/src/main/resources/static/img/armor_10.jpg'),
+VALUES (1008, 'Armor 10', 'Ulefone', 550, 7, LOAD_FILE('C:/Git Repo/OceanBlu/src/main/resources/static/img/armor_10.jpg'),
         'General
 
 •   Model:      Ulefone Armor 10
