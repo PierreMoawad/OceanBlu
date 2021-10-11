@@ -99,7 +99,6 @@
       <li>[ ] Adding <a href="https://oauth.net/2/">OAuth2</a></li>
       <li>[ ] Adding dashboard (<b>Admin privilege</b>)</li>
       <li>[ ] Activating/Deactivating users and changing roles (<b>Admin privilege</b>)</li>
-      <li>[ ] Adding dashboard (<b>Admin privilege</b>)</li>
       <li>[ ] Integration testing</li>
       <li>[ ] Adding search feature</li>
    </ul>

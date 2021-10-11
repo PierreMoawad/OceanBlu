@@ -126,6 +126,11 @@ public class User {
         this.gender = gender;
     }
 
+    public void setWishlist(Set<Wish> wishlist) {
+
+        this.wishlist = wishlist;
+    }
+
     public void addTransaction(Transaction transaction) {
 
         assert transactions != null;

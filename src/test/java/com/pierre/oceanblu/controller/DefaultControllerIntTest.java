@@ -1,46 +1,52 @@
 package com.pierre.oceanblu.controller;
 
-import com.pierre.oceanblu.config.WebConfig;
+import com.pierre.oceanblu.model.User;
 import com.pierre.oceanblu.service.UserService;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
+import java.util.Objects;
+
+import static com.pierre.oceanblu.model.User.Gender.FEMALE;
+import static com.pierre.oceanblu.model.User.Role.ADMIN;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = WebConfig.class)
+@AutoConfigureMockMvc
 class DefaultControllerIntTest {
 
-    @Autowired
-    private WebApplicationContext context;
+    @MockBean
+    private UserService userServiceMock;
+
+    @InjectMocks
+    private DefaultController defaultControllerMock;
 
     @Autowired
     private MockMvc mvc;
 
-    @Autowired
-    private UserService userService;
-
     @Before
     public void before() {
 
-        mvc = MockMvcBuilders.webAppContextSetup(context)
+        mvc = MockMvcBuilders.standaloneSetup(defaultControllerMock)
                 .apply(springSecurity())
                 .build();
     }
@@ -48,41 +54,86 @@ class DefaultControllerIntTest {
     @Test
     public void getIndexWithoutUserTest() throws Exception {
 
-        mvc = MockMvcBuilders.webAppContextSetup(context)
-                .apply(springSecurity())
-                .build();
-
-        String actualRedirect = "http://localhost/login";
-
-        RequestBuilder requestBuilder = get("/");
-        MvcResult expectedResult = mvc.perform(requestBuilder).andReturn();
-
-        assertEquals(expectedResult.getResponse().getRedirectedUrl(), actualRedirect);
+        mvc.perform(get("/"))
+                .andExpect(redirectedUrl("http://localhost/login"));
     }
 
     @Test
     public void getIndexWithUserTest() throws Exception {
 
-        mvc = MockMvcBuilders.webAppContextSetup(context)
-                .apply(springSecurity())
+        mvc.perform(get("/").with(user("user")))
+                .andExpect(redirectedUrl("/products"));
+    }
+
+    @Test
+    void showLoginFormAfterLogoutTest() throws Exception {
+
+        MvcResult expectedResult = mvc.perform(get("/login?logout=true")).andReturn();
+
+        assertTrue(expectedResult.getResponse().getContentAsString().contains("You have been logged out."));
+        assertEquals(Objects.requireNonNull(expectedResult.getModelAndView()).getViewName(), "login");
+    }
+
+    @Test
+    void showLoginFormAfterPasswordChange() throws Exception {
+
+        MvcResult expectedResult = mvc.perform(get("/login?newPass=true")).andReturn();
+
+        assertTrue(expectedResult.getResponse().getContentAsString().contains("Please login with new password"));
+        assertEquals(Objects.requireNonNull(expectedResult.getModelAndView()).getViewName(), "login");
+    }
+
+    @Test
+    void showRegistrationFormHasNewUserInModelTest() throws Exception {
+
+        mvc.perform(get("/register"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("user", instanceOf(User.class)))
+                .andExpect(view().name("register"));
+    }
+
+    @Test
+    void registerNewUserTest() throws Exception {
+
+        User user = User.builder()
+                .id(2L)
+                .firstName("Caroline")
+                .lastName("Thomson")
+                .username("admin")
+                .password("aDmIn*/8558/*")
+                .role(ADMIN)
+                .gender(FEMALE)
                 .build();
 
-        String actualRedirect = "http://localhost/products";
+        when(userServiceMock.isNewUser(user.getUsername())).thenReturn(true);
 
-        MvcResult expectedResult = mvc.perform(get("/").with(user("user"))).andReturn();
+        mvc.perform(post("/register").flashAttr("user", user))
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("/login"));
 
-        assertEquals(expectedResult.getResponse().getRedirectedUrl(), actualRedirect);
+        verify(userServiceMock, times(1)).registerUser(user);
     }
 
     @Test
-    void showLoginForm() {
-    }
+    void registerExistingUserTest() throws Exception {
 
-    @Test
-    void showRegistrationForm() {
-    }
+        User user = User.builder()
+                .id(2L)
+                .firstName("Caroline")
+                .lastName("Thomson")
+                .username("admin")
+                .password("aDmIn*/8558/*")
+                .role(ADMIN)
+                .gender(FEMALE)
+                .build();
 
-    @Test
-    void registerUser() {
+        when(userServiceMock.isNewUser(user.getUsername())).thenReturn(false);
+
+        mvc.perform(post("/register").flashAttr("user", user))
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("/register?error=true"));
+
+        verify(userServiceMock, times(0)).registerUser(user);
     }
 }
