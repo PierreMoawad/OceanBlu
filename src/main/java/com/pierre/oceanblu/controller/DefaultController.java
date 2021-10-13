@@ -2,12 +2,12 @@ package com.pierre.oceanblu.controller;
 
 import com.pierre.oceanblu.model.User;
 import com.pierre.oceanblu.service.UserService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Controller
 public class DefaultController {
 

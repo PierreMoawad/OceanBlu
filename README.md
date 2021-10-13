@@ -96,10 +96,10 @@
       <li>[x] Choosing between ordering existing products or a new product (<b>Admin privilege</b>)</li>
       <li>[x] Custom error pages for different response statuses</li>
       <li>[x] Unit testing</li>
+      <li>[x] Integration testing</li>
       <li>[ ] Adding <a href="https://oauth.net/2/">OAuth2</a></li>
       <li>[ ] Adding dashboard (<b>Admin privilege</b>)</li>
       <li>[ ] Activating/Deactivating users and changing roles (<b>Admin privilege</b>)</li>
-      <li>[ ] Integration testing</li>
       <li>[ ] Adding search feature</li>
    </ul>
 </details>
