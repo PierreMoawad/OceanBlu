@@ -2,7 +2,7 @@ package com.pierre.oceanblu.security;
 
 import com.pierre.oceanblu.security.filter.JwtRequestFilter;
 import com.pierre.oceanblu.service.MyUserDetailsService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     private static final String ADMIN = "ADMIN";
@@ -35,7 +35,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                     .antMatchers("/stock/**", "/admin/**", "/api/stock").hasRole(ADMIN)
                     .antMatchers("/products/**", "/users/**", "/").hasAnyRole(USER, ADMIN)
-                    .antMatchers("/login", "/register", "/api/authenticate").permitAll()
+                    .antMatchers("/login", "/register", "/api/authenticate", "/oauth/**").permitAll()
                 .and()
                     .formLogin()
                         .loginPage("/login")
@@ -48,8 +48,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                         .logoutSuccessHandler(new MyLogoutSuccessHandler())
                         .invalidateHttpSession(true)
                 .and()
-                    .csrf()
-                        .disable();
+                    .oauth2Login()
+                        .loginPage("/login");
 
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }

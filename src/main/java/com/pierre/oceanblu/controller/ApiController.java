@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -46,9 +48,9 @@ public class ApiController {
     }
 
     @GetMapping("/stock")
-    public ResponseEntity<List<Transaction>> getStock() {
+    public ResponseEntity<List<String>> getStock() {
 
         List<Transaction> transactions = mainService.listAllTransactions();
-        return ResponseEntity.ok(transactions);
+        return ResponseEntity.ok(transactions.stream().map(Objects::toString).collect(Collectors.toList()));
     }
 }

@@ -3,21 +3,21 @@ USE ocean_blu;
 --  //////// USERS //////// --
 
 INSERT IGNORE INTO user
-    (id, username, password, active, first_name, last_name, role, gender)
+    (id, username, password, active, first_name, last_name, role, gender, provider)
 VALUES (1, 'admin', '$2a$10$BxwiCZxdU6S8xN2wUelMSufY15laFqHqEMgMCUraFFqf7.m.9dcVS', true, 'Pierre', 'Moawad', 'ADMIN',
-        'MALE');
+        'MALE', 'LOCAL');
 INSERT IGNORE INTO user
-    (id, username, password, active, first_name, last_name, role, gender)
+    (id, username, password, active, first_name, last_name, role, gender, provider)
 VALUES (2, 'johny', '$2a$10$L4kl2Fq6LtWZLR3uDLc2QeZr8BqD8b0ztAJ7YzeLYIQn8lphs1CQa', true, 'John', 'Smith', 'USER',
-        'MALE');
+        'MALE', 'LOCAL');
 INSERT IGNORE INTO user
-    (id, username, password, active, first_name, last_name, role, gender)
+    (id, username, password, active, first_name, last_name, role, gender, provider)
 VALUES (3, 'lana_r', '$2a$10$DTYkfNhl7ZHN2ficqFKv8unCcVlBhaMLD5UOMb5E1qhrGDuLiCmqS', true, 'Lana', 'Robinson', 'USER',
-        'FEMALE');
+        'FEMALE', 'LOCAL');
 INSERT IGNORE INTO user
-    (id, username, password, active, first_name, last_name, role, gender)
+    (id, username, password, active, first_name, last_name, role, gender, provider)
 VALUES (4, 'samantha.schultz', '$2a$10$zyopVv0Re1KJTuK0gEYdduWoAJb/gZaFyeQF7C0SPeA/esolgzbzS', true, 'Samantha',
-        'Schultz', 'USER', 'FEMALE');
+        'Schultz', 'USER', 'FEMALE', 'LOCAL');
 
 --  //////// PRODUCTS //////// --
 

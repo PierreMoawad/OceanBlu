@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS ocean_blu.user
     `last_name`  VARCHAR(12) NOT NULL,
     `role`       VARCHAR(15) NOT NULL,
     `gender`     VARCHAR(15) NOT NULL,
+    `provider`   VARCHAR(15) NOT NULL,
     PRIMARY KEY (id)
 );
 
