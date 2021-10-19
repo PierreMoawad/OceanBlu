@@ -49,7 +49,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                         .invalidateHttpSession(true)
                 .and()
                     .oauth2Login()
-                        .loginPage("/login");
+                        .loginPage("/login")
+                .and()
+                    .csrf()
+                        .disable();
 
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }

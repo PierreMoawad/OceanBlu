@@ -38,16 +38,6 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     @Nullable
     private Set<Wish> wishlist;
-    @Enumerated
-    private Provider provider;
-
-    public Provider getProvider() {
-        return provider;
-    }
-
-    public void setProvider(Provider provider) {
-        this.provider = provider;
-    }
 
     public Long getId() {
         return id;
@@ -212,10 +202,5 @@ public class User {
 
             return value;
         }
-    }
-
-    public enum Provider {
-
-        LOCAL, GOOGLE
     }
 }
