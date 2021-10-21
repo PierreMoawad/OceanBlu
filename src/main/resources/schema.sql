@@ -3,7 +3,7 @@ USE ocean_blu;
 CREATE TABLE IF NOT EXISTS ocean_blu.user
 (
     `id`         INT         NOT NULL AUTO_INCREMENT,
-    `username`   VARCHAR(12) NOT NULL,
+    `username`   VARCHAR(25) NOT NULL,
     `password`   VARCHAR(99) NOT NULL,
     `active`     BOOLEAN     NOT NULL,
     `first_name` VARCHAR(12) NOT NULL,

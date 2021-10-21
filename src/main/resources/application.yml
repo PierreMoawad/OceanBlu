@@ -1,0 +1,31 @@
+server:
+  error:
+    path: /error
+    whitelabel:
+      enabled: false
+
+spring:
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ocean_blu?createDatabaseIfNotExist=true
+    username: root
+    password: Root*597*Coz
+    initialization-mode: always
+
+  servlet:
+    multipart:
+      max-file-size: 64KB
+      max-request-size: 64KB
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 323026879687-lslhsva3mnqse22ith802snk0lo6oc9l.apps.googleusercontent.com
+            client-secret: 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

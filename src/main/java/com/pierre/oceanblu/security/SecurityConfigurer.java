@@ -2,7 +2,7 @@ package com.pierre.oceanblu.security;
 
 import com.pierre.oceanblu.security.filter.JwtRequestFilter;
 import com.pierre.oceanblu.service.MyUserDetailsService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     private static final String ADMIN = "ADMIN";
@@ -47,6 +47,9 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                     .logout()
                         .logoutSuccessHandler(new MyLogoutSuccessHandler())
                         .invalidateHttpSession(true)
+                .and()
+                    .oauth2Login()
+                        .loginPage("/login")
                 .and()
                     .csrf()
                         .disable();
