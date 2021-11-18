@@ -1,0 +1,34 @@
+services:
+  mysql-blu:
+    container_name: mysql-blu
+    image: mysql:8.0.27
+    cap_add:
+      - SYS_NICE
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQLDB_ROOT_PASSWORD}
+      MYSQL_USER: inituser
+      MYSQL_PASSWORD: initpassword
+    expose:
+      - ${MYSQLDB_LOCAL_PORT}
+    volumes:
+      - mysql-db:/var/lib/mysql
+      - ./db-scripts:/docker-entrypoint-initdb.d
+      - ./mysqlconf:/etc/mysql/conf.d
+    ports:
+      - ${MYSQLDB_LOCAL_PORT}:${MYSQLDB_DOCKER_PORT}
+  ocean_blu_app:
+    container_name: ocean_blu_app
+    restart: always
+    build: .
+    env_file: ./.env
+    ports:
+      - ${SPRING_LOCAL_PORT}:${SPRING_DOCKER_PORT}
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-blu:${MYSQLDB_DOCKER_PORT}/${MYSQLDB_DATABASE}?createDatabaseIfNotExist=true
+    depends_on:
+      - mysql-blu
+    links:
+      - mysql-blu
+volumes:
+  mysql-db:
